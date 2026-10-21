@@ -52,6 +52,14 @@ Why It Matters: These permissions allow accounts to modify properties or reset p
 
 How I identified It: I analyzed permission relationships and potential attack paths within BloodHound to find accounts with excessive control over other objects. 
 
+**Delegated Rights Analysis**
+
+![Delegated rights](screenshots/02_delegated_rights_10-45.png)
+
+**Object-Control Relationships**
+
+![Object-control relationships](screenshots/03_object_control_relationships_11-45.png)
+
 
 3. SPM-Enabled Service Account
 
@@ -60,6 +68,10 @@ Findings: Identified an SPN-enabled service account (SQLServices) that presents 
 Why It Matters: Kerberoasting allows an authenticated domain user to request service tickets associated with SPN-enabled accounts and can attempt to crack the encrypted ticket content offline. Weak service-account passwords can increase the risk of account compromise.
 
 How I identified It: I examined the service account's Active Directory configuration and its representation in BloodHound to identify the potential security exposure. 
+
+**SQLServices Account Analysis**
+
+![SPN-enabled service account](screenshots/04_service_account_spn_13-45.png)
 
 
 ## Remediation & Validation 
@@ -74,6 +86,10 @@ Validation: Collected the updated Active Directory data using SharpHound and com
 
 ![Post-change group relationships](screenshots/08_post_change_memberships_17-45.png)
 
+**Active Directory Account Administration**
+
+![Active Directory accounts](screenshots/05_active_directory_accounts_15-30.png)
+
 
 2. Excessive Delegated Permissions
 
@@ -81,11 +97,29 @@ Remediation: I modified the delegated permissions in Active Directory, this incl
 
 Validation: Re-ran SharpHound and reviewed the updated relationships in BloodHound to compare the environment before and after the permission changes.
 
+**Reviewing Account Permissions**
+
+![Account permissions](screenshots/06_account_permissions_16-15.png)
+
+**Post-Remediation Object-Control Review**
+
+![Updated object-control relationships](screenshots/09_post_change_object_control_19-15.png)
+
+
 3. SPN-Enabled Service Account
 
 Remediation: Used PowerShell to modify the Service Principal Name (SPN) configuration that was associated with the SQLServices account. 
 
 Validation: PowerShell reported that the account was successfully updated. However, the BloodHound review still displayed the SPN. 
+
+**PowerShell SPN Modification**
+
+![SPN modification command](screenshots/07_spn_removal_command_17-15.png)
+
+**SPN Verification — Inconclusive**
+
+![SPN still visible in BloodHound](screenshots/10_spn_still_visible_in_bloodhound_19-45.png)
+
 
 ## Assessment Results
 
