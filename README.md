@@ -41,7 +41,7 @@ How I identified It: I used BloodHound to analyze security group memberships and
 
 **Initial BloodHound Analysis**
 
-![Initial privilege relationships](screenshots/01_initial_privilege_relationships_07-30.png)
+![Initial IT_Admin relationships](screenshots/01_initial_it_admin_relationships_07-25.png)
 
 
 2. Excessive Delegated Permissions
@@ -52,14 +52,9 @@ Why It Matters: These permissions allow accounts to modify properties or reset p
 
 How I identified It: I analyzed permission relationships and potential attack paths within BloodHound to find accounts with excessive control over other objects. 
 
-**Delegated Rights Analysis**
+**GenericWrite Permission Relationship**
 
-![Delegated rights](screenshots/02_delegated_rights_10-45.png)
-
-**Object-Control Relationships**
-
-![Object-control relationships](screenshots/03_object_control_relationships_11-45.png)
-
+![GenericWrite relationship](screenshots/04_genericwrite_bloodhound_12-05.png)
 
 3. SPM-Enabled Service Account
 
@@ -69,9 +64,9 @@ Why It Matters: Kerberoasting allows an authenticated domain user to request ser
 
 How I identified It: I examined the service account's Active Directory configuration and its representation in BloodHound to identify the potential security exposure. 
 
-**SQLServices Account Analysis**
+**SQLServices SPN Finding**
 
-![SPN-enabled service account](screenshots/04_service_account_spn_13-45.png)
+![SQLServices service principal name](screenshots/06_sqlservices_spn_13-30.png)
 
 
 ## Remediation & Validation 
@@ -82,13 +77,13 @@ Remediation: I reviewed Active Directory group memberships and removed the privi
 
 Validation: Collected the updated Active Directory data using SharpHound and compared the relationships in BloodHound to verify that the privilege access had been reduced.
 
-**Post-Remediation BloodHound Review**
+**Before Remediation — IT_Admin Group**
 
-![Post-change group relationships](screenshots/08_post_change_memberships_17-45.png)
+![IT_Admin membership before remediation](screenshots/02_it_admin_members_before_15-16.png)
 
-**Active Directory Account Administration**
+**After Remediation — IT_Admin Group**
 
-![Active Directory accounts](screenshots/05_active_directory_accounts_15-30.png)
+![IT_Admin membership after remediation](screenshots/03_it_admin_members_after_15-52.png)
 
 
 2. Excessive Delegated Permissions
@@ -97,14 +92,9 @@ Remediation: I modified the delegated permissions in Active Directory, this incl
 
 Validation: Re-ran SharpHound and reviewed the updated relationships in BloodHound to compare the environment before and after the permission changes.
 
-**Reviewing Account Permissions**
+**Active Directory Permission Review**
 
-![Account permissions](screenshots/06_account_permissions_16-15.png)
-
-**Post-Remediation Object-Control Review**
-
-![Updated object-control relationships](screenshots/09_post_change_object_control_19-15.png)
-
+![Help Desk delegated permissions](screenshots/05_helpdesk_permissions_review_16-07.png)
 
 3. SPN-Enabled Service Account
 
@@ -114,11 +104,11 @@ Validation: PowerShell reported that the account was successfully updated. Howev
 
 **PowerShell SPN Modification**
 
-![SPN modification command](screenshots/07_spn_removal_command_17-15.png)
+![SPN modification command](screenshots/07_spn_removal_command_17-10.png)
 
-**SPN Verification — Inconclusive**
+**Post-Modification Verification**
 
-![SPN still visible in BloodHound](screenshots/10_spn_still_visible_in_bloodhound_19-45.png)
+![SPN still visible in BloodHound](screenshots/08_spn_still_visible_19-55.png)
 
 
 ## Assessment Results
