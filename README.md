@@ -39,6 +39,10 @@ Why It Matters: This increases security risks because if one of those accounts w
 
 How I identified It: I used BloodHound to analyze security group memberships and relationships between users and privileged groups. 
 
+**Initial BloodHound Analysis**
+
+![Initial privilege relationships](screenshots/01_initial_privilege_relationships_07-30.png)
+
 
 2. Excessive Delegated Permissions
 
@@ -65,6 +69,11 @@ How I identified It: I examined the service account's Active Directory configura
 Remediation: I reviewed Active Directory group memberships and removed the privileged access from accounts that did not need administrative permissions.
 
 Validation: Collected the updated Active Directory data using SharpHound and compared the relationships in BloodHound to verify that the privilege access had been reduced.
+
+**Post-Remediation BloodHound Review**
+
+![Post-change group relationships](screenshots/08_post_change_memberships_17-45.png)
+
 
 2. Excessive Delegated Permissions
 
