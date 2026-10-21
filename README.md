@@ -95,7 +95,7 @@ Validation: Re-ran SharpHound and reviewed the updated relationships in BloodHou
 
 **Active Directory Permission Review**
 
-![Help Desk delegated permissions](screenshots/05_helpdesk_permissions_review_16-07.png)
+![Help Desk delegated permissions](Untitled.png)
 
 This verified the removal of the specific delegated access identified during remediation.
 3. SPN-Enabled Service Account
