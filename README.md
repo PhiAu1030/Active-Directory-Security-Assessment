@@ -85,6 +85,7 @@ Validation: Collected the updated Active Directory data using SharpHound and com
 
 ![IT_Admin membership after remediation](screenshots/03_it_admin_members_after_15-52.png)
 
+This confirmed that the unnecessary group membership found had been successfully removed.
 
 2. Excessive Delegated Permissions
 
@@ -96,6 +97,7 @@ Validation: Re-ran SharpHound and reviewed the updated relationships in BloodHou
 
 ![Help Desk delegated permissions](screenshots/05_helpdesk_permissions_review_16-07.png)
 
+This verified the removal of the specific delegated access identified during remediation.
 3. SPN-Enabled Service Account
 
 Remediation: Used PowerShell to modify the Service Principal Name (SPN) configuration that was associated with the SQLServices account. 
