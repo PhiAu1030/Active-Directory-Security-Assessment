@@ -123,7 +123,13 @@ By comparing the collected data before and after remediation, I was able to see 
 The project also reinforces the importance of verifying security changes instead of assuming a configuration was successful just because a command completed with no errors.
 
 
+## Lessons Learned
 
+This project has given me a better understanding of how Active Directory permissions and relationships can create security risks that are not always obvious and can be overlooked when looking at individual accounts or groups.
+
+Using BloodHound was a strong educational experience allowing me to visualize these relationships and identify potential privilege-escalation opportunities. I also gained hands-on experience reviewing and modifying Active Directory permissions, removing privilege access that aren't necessary, and applying the principle of least privilege. 
+
+The biggest takeaways was learning the importance of validating security changes. Even when configurations has been modified it does not mean security issues have been resolved. Going back and checking the results is one of the most important steps in the assessment process.
 
 
 
