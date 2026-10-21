@@ -1,1 +1,0 @@
-# BloodHound Assessment Screenshots
