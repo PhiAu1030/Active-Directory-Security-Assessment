@@ -95,9 +95,10 @@ Validation: Re-ran SharpHound and reviewed the updated relationships in BloodHou
 
 **Active Directory Permission Review**
 
-![Help Desk delegated permissions](Untitled.png)
+![Help Desk permissions before and after remediation](screenshots/helpdesk_permissions_before_after.png)
 
 This verified the removal of the specific delegated access identified during remediation.
+
 3. SPN-Enabled Service Account
 
 Remediation: Used PowerShell to modify the Service Principal Name (SPN) configuration that was associated with the SQLServices account. 
@@ -111,6 +112,8 @@ Validation: PowerShell reported that the account was successfully updated. Howev
 **Post-Modification Verification**
 
 ![SPN still visible in BloodHound](screenshots/08_spn_still_visible_19-55.png)
+
+The removal could not be conclusively verified.
 
 
 ## Assessment Results
