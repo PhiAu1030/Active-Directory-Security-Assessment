@@ -3,8 +3,8 @@
 
 ## Project Overview
 
-This project was completed to meet the requirements of my Cyber Operations course where I explore how BloodHound can be used to find potential security weaknesses within an Active Directory environment. 
-For the project, I build a very small virtual environment using Windows Server 2025 and Windows 11 in VMware for the two virtual machines. For the demonstration I configured users, groups, and intentionally misconfigured permissions in Active Directory to demonstrate common security issues that organizations may encounter. 
+This project was completed to meet the requirements of my Cyber Operations course where I explored how BloodHound can be used to find potential security weaknesses within an Active Directory environment. 
+For the project, I built a very small virtual environment using Windows Server 2025 and Windows 11 in VMware for the two virtual machines. For the demonstration I configured users, groups, and intentionally misconfigured permissions in Active Directory to demonstrate common security issues that organizations may encounter. 
 
 The goal was to use BloodHound and SharpHound together and analyze the relationships within Active Directory, discover potential privilege-escalation paths, understand why security weaknesses such as misconfigurations are high risk, and practice remediating them. 
 
@@ -13,7 +13,7 @@ I also wanted to demonstrate how security assessments can be more than just iden
 
 ## Lab Architecture
 
-The environment consist of two machines, Windows Server 2025 domain controller and a Windows 11 workstation in VMware.
+The environment consists of two machines, Windows Server 2025 domain controller and a Windows 11 workstation in VMware.
 The environment used corp.local domain, where I configured users, security groups, and intentionally misconfigured permissions for potential security weaknesses. 
 
 | Machine  | Operating System    | Purpose                                                                                     |
@@ -46,7 +46,7 @@ How I identified It: I used BloodHound to analyze security group memberships and
 
 2. Excessive Delegated Permissions
 
-Findings: Found unnecessary delegated permissions such as GenericWrite and ForceChanfePassword, this could create potential privilege-escalation paths.  
+Findings: Found unnecessary delegated permissions such as GenericWrite and ForceChangePassword, this could create potential privilege-escalation paths.  
 
 Why It Matters: These permissions allow accounts to modify properties or reset passwords on other Active Directory objects. If assigned incorrectly, they can potentially allow users to gain access or privileges they should not have.
 
@@ -56,7 +56,7 @@ How I identified It: I analyzed permission relationships and potential attack pa
 
 ![GenericWrite relationship](screenshots/04_genericwrite_bloodhound_12-05.png)
 
-3. SPM-Enabled Service Account
+3. SPN-Enabled Service Account
 
 Findings: Identified an SPN-enabled service account (SQLServices) that presents potential Kerberoasting risk. 
 
@@ -118,7 +118,7 @@ The removal could not be conclusively verified.
 
 ## Assessment Results
 
-The assessment demonstrated how BloodHound can help identify potential risk in Active Directory relationships and evaluate changes made to reduce unnecessary permissions.
+The assessment demonstrated how BloodHound can help identify potential risks in Active Directory relationships and evaluate changes made to reduce unnecessary permissions.
 By comparing the collected data before and after remediation, I was able to see how changes to group memberships and delegated permissions can affect potential privilege-escalation paths.
 The project also reinforces the importance of verifying security changes instead of assuming a configuration was successful just because a command completed with no errors.
 
@@ -127,9 +127,9 @@ The project also reinforces the importance of verifying security changes instead
 
 This project has given me a better understanding of how Active Directory permissions and relationships can create security risks that are not always obvious and can be overlooked when looking at individual accounts or groups.
 
-Using BloodHound was a strong educational experience allowing me to visualize these relationships and identify potential privilege-escalation opportunities. I also gained hands-on experience reviewing and modifying Active Directory permissions, removing privilege access that aren't necessary, and applying the principle of least privilege. 
+Using BloodHound was a strong educational experience allowing me to visualize these relationships and identify potential privilege-escalation opportunities. I also gained hands-on experience reviewing and modifying Active Directory permissions, removing unnecessary privileged access that aren't necessary, and applying the principle of least privilege. 
 
-The biggest takeaways was learning the importance of validating security changes. Even when configurations has been modified it does not mean security issues have been resolved. Going back and checking the results is one of the most important steps in the assessment process.
+The biggest takeaway was learning the importance of validating security changes. Even when configurations have been modified it does not mean security issues have been resolved. Going back and checking the results is one of the most important steps in the assessment process.
 
 
 
